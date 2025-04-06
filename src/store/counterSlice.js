@@ -15,6 +15,12 @@ const counterSlice = createSlice({
                 todo.completed = !todo.completed;
             }
         },
+        toogleImportant: (state, action) => {
+            const todo = state.value.find(t => t.id === action.payload);
+            if (todo) {
+                todo.important = !todo.important;
+            }
+        },
         moveToTrash: (state, action) => {
             const todo = state.value.find(t => t.id === action.payload);
             if (todo) todo.trashed = true;
@@ -29,5 +35,5 @@ const counterSlice = createSlice({
     }
 });
 
-export const { addTodo, toggleCompleted, moveToTrash, restoreTodo, permanentlyDeleteTodo } = counterSlice.actions;
+export const { addTodo, toggleCompleted, toogleImportant, moveToTrash, restoreTodo, permanentlyDeleteTodo } = counterSlice.actions;
 export default counterSlice.reducer;

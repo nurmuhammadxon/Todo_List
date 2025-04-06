@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { FaCircleCheck, FaTrash } from "react-icons/fa6";
-import { toggleCompleted, moveToTrash } from '../store/counterSlice';
+import { FaCircleCheck, FaTrash, FaStar, FaRegStar } from "react-icons/fa6";
+import { toggleCompleted, toogleImportant, moveToTrash } from '../store/counterSlice';
 
 function CompletedTodo() {
     const dispatch = useDispatch();
@@ -15,6 +15,10 @@ function CompletedTodo() {
         dispatch(moveToTrash(id));
     };
 
+    const handleToogleImportant = (id) => {
+        dispatch(toogleImportant(id))
+    };
+
     return (
         <div className='max-w-[1024px] w-full h-screen mx-auto py-5 px-4'>
             <h1 className='text-4xl text-indigo-600 font-extrabold'>Completed Todo List</h1>
@@ -22,7 +26,7 @@ function CompletedTodo() {
                 {todos.filter(todo => todo.completed && !todo.trashed).map(todo => (
                     <li
                         key={todo.id}
-                        className={`w-full py-3 px-4 rounded-lg flex items-center justify-between ${todo.important ? 'bg-yellow-500' : 'bg-gray-800'}`}
+                        className={`w-full py-3 px-4 rounded-lg flex items-center justify-between ${todo.important ? 'bg-teal-600' : 'bg-gray-800'}`}
                     >
                         <span
                             className='relative w-7/8 text-xl'>
@@ -36,6 +40,16 @@ function CompletedTodo() {
                                 className='rounded-full size-5 text-xl cursor-pointer hover:scale-125 transition duration-300 bg-white'
                             >
                                 <FaCircleCheck className='text-green-500' />
+                            </button>
+                            <button
+                                onClick={() => handleToogleImportant(todo.id)}
+                                className='rounded-full size-5 text-xl cursor-pointer hover:scale-125 transition duration-300'
+                            >
+                                {todo.important ? (
+                                    <FaStar className='text-yellow-500' />
+                                ) : (
+                                    <FaRegStar />
+                                )}
                             </button>
                             <button
                                 onClick={() => handleRemoveTodo(todo.id)}

@@ -9,7 +9,7 @@ function TrashTodo() {
     const trashedTodos = todos.filter(todo => todo.trashed);
 
     const handleRemove = () => {
-        
+
     }
 
     return (
@@ -19,7 +19,7 @@ function TrashTodo() {
             </h2>
             <ul className='w-[90%] mx-auto mt-10 text-white flex flex-col items-center gap-4 justify-center'>
                 {trashedTodos.map(todo => (
-                    <li key={todo.id} className='bg-gray-800 w-full p-4 rounded-lg flex justify-between items-center'>
+                    <li key={todo.id} className='bg-gray-800 w-full p-4 rounded-lg flex justify-between items-center text-xl'>
                         <span
                             style={{
                                 textDecoration: todo.completed ? 'line-through' : 'none',
