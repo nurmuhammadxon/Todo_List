@@ -21,14 +21,16 @@ function AllTodo() {
 
     return (
         <div className='max-w-[1024px] w-full h-screen mx-auto py-5 px-4'>
-            <h1 className='text-4xl text-indigo-600 font-extrabold'>All List</h1>
+            <h1 className='text-2xl sm:text-4xl md:text-5xl text-indigo-600 font-extrabold'>
+                All List
+            </h1>
             <ul className='w-[90%] mx-auto mt-10 text-white flex flex-col items-center gap-4 justify-center'>
                 {todos.filter(todo => !todo.trashed).map(todo => (
                     <li
                         key={todo.id}
-                        className={`w-full py-3 px-4 rounded-lg flex items-center justify-between ${todo.important ? 'bg-teal-600' : 'bg-gray-800'}`}
+                        className={`w-full py-2.5 md:py-3 px-4 rounded-lg flex items-center justify-between ${todo.important ? 'bg-teal-600' : 'bg-gray-800'}`}
                     >
-                        <span className={`relative w-7/8 text-xl ${todo.completed ? 'text-white/60' : ''}`}>
+                        <span className={`relative w-3/4 sm:w-4/5 lg:w-7/8 text-base md:text-xl ${todo.completed ? 'text-white/60' : ''}`}>
                             {todo.title}
                             <span
                                 className={`absolute top-1/2 left-0 w-full h-0.5 bg-red-600 
@@ -38,7 +40,7 @@ function AllTodo() {
                         <span className='flex gap-3'>
                             <button
                                 onClick={() => handleToggleCompleted(todo.id)}
-                                className={`rounded-full size-5 text-xl cursor-pointer hover:scale-125 transition duration-300
+                                className={`rounded-full size-4 md:size-5 text-base md:text-xl cursor-pointer hover:scale-125 transition duration-300
                                 ${todo.completed ? 'bg-white' : ''}`}
                             >
                                 {todo.completed ? (
@@ -49,7 +51,7 @@ function AllTodo() {
                             </button>
                             <button
                                 onClick={() => handleToogleImportant(todo.id)}
-                                className='rounded-full size-5 text-xl cursor-pointer hover:scale-125 transition duration-300'
+                                className='text-base md:text-xl cursor-pointer hover:scale-125 transition duration-300'
                             >
                                 {todo.important ? (
                                     <FaStar className='text-yellow-500' />
@@ -59,7 +61,7 @@ function AllTodo() {
                             </button>
                             <button
                                 onClick={() => handleRemoveTodo(todo.id)}
-                                className='text-xl text-red-600 cursor-pointer hover:scale-125 transition duration-300'
+                                className='text-base md:text-xl text-red-600 cursor-pointer hover:scale-125 transition duration-300'
                             >
                                 <FaTrash />
                             </button>

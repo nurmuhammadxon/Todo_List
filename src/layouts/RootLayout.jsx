@@ -8,7 +8,7 @@ function RootLayout() {
             <header>
                 <Header />
             </header>
-            <main className='mt-24 bg-gray-600'>
+            <main className='mt-20 lg:mt-24 bg-gray-600'>
                 <Outlet />
             </main>
         </>
